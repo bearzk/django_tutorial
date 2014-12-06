@@ -1,0 +1,10 @@
+{% if error_message %}{% endif %}
+<ul>
+    <li><h1>
+        {{ p }}
+        <span><a href="{% url 'blog:author' a %}">{{ a }}</a></span>
+    </h1></li>
+    <li>
+        {{ p.content }}
+    </li>
+</ul>
