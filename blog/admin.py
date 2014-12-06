@@ -7,6 +7,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title']
     fieldsets = [
         ('Title of the Post', {'fields': ['title']}),
+        ('Slug of the Post', {'fields': ['slug']}),
         ('Post text body', {'fields': ['content']}),
     ]
 
