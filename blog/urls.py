@@ -4,7 +4,7 @@ from blog import views
 
 urlpatterns = patterns('',
     url(r'^$', views.IndexView.as_view(), name='index'),
-    # TODO: change post_id to use slug of post, mind the model too
-    url(r'(?P<post_id>\d)', views.detail, name='detail'),
+    url(r'(?P<post_slug>.*)', views.detail, name='detail'),
+    url(r'comment/(?P<comment_id>[0-9]+)', views.CommentView.as_view(), name='comment'),
     url(r'author/(?P<author_name>[a-zA-Z0-9-_]+)', views.author, name='author'),
 )
