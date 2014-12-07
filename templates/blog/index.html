@@ -1,13 +1,18 @@
-<form action="{% url 'blog:index' %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="title">
-    <input type="text" name="content">
-    <input type="submit" value="post">
-</form>
+<head>
+    <title>blog index</title>
+</head>
+<body>
+    <form action="{% url 'blog:index' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="title">
+        <input type="text" name="content">
+        <input type="submit" value="post">
+    </form>
 
-<ul>
-    {% for p in ps %}
-        <li><a href="{% url 'blog:detail' p.id %}">{{ p.title }}</a>  {{ p.pub_date }}</li>
-    {% endfor %}
-</ul>
+    <ul>
+        {% for p in ps %}
+        <li><a href="{% url 'blog:detail' p.slug %}">{{ p.title }}</a>  {{ p.pub_date }}</li>
+        {% endfor %}
+    </ul>
+</body>
 

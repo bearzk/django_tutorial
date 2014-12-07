@@ -5,6 +5,19 @@
         <span><a href="{% url 'blog:author' a %}">{{ a }}</a></span>
     </h1></li>
     <li>
+        {{ p.slug }}
+    </li>
+    <li>
         {{ p.content }}
     </li>
 </ul>
+
+{% if c %}
+<ul>
+    {% for c in cs %}
+    <li>
+        {{ c.content }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
