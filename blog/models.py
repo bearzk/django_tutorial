@@ -19,8 +19,8 @@ class Author(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.CharField(max_length=200, default='')
+    title = models.CharField(max_length=100)
+    slug = models.CharField(max_length=100, default='', unique=True)
     author = models.ForeignKey(Author)
     pub_date = models.DateTimeField('date published')
     content = models.TextField(max_length=20000)
@@ -42,9 +42,8 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post)
-    author = models.ForeignKey(Author)
     pub_date = models.DateTimeField('date published')
-    content = models.TextField(max_length=2000)
+    content = models.TextField(max_length=500)
 
     def __unicode__(self):
         return self.content
