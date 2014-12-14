@@ -12,6 +12,14 @@
     </li>
 </ul>
 
+<p>Add a comment here:</p>
+<form action="{% url 'blog:add_comment' %}" method="post">
+        {% csrf_token %}
+        <input style="display: none;" type="text" value="{{ p.slug }}">
+        <input type="text" name="content">
+        <input type="submit" value="comment">
+</form>
+
 {% if c %}
 <ul>
     {% for c in cs %}
