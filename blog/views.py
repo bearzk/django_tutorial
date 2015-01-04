@@ -35,6 +35,13 @@ def author(request, author_name):
     return render(request, 'blog/author.html', {'a': a})
 
 
+def add_comment(request, post_slug):
+    p = get_object_or_404(Post, slug=post_slug)
+    c = p.comment_set.create(content=request.POST['content'], pub_date=timezone.now())
+    c.save()
+    return redirect('blog:detail', post_slug=p.slug)
+
+
 class CommentView(CreateView):
     template_name = 'blog/comment.html'
     context_object_name = 'cs'

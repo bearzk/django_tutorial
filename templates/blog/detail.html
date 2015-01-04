@@ -1,26 +1,18 @@
 {% if error_message %}{% endif %}
-<ul>
-    <li><h1>
-        {{ p }}
-        <span><a href="{% url 'blog:author' a %}">{{ a }}</a></span>
-    </h1></li>
-    <li>
-        {{ p.slug }}
-    </li>
-    <li>
-        {{ p.content }}
-    </li>
-</ul>
+<h1>
+    {{ p }}
+    <span><a href="{% url 'blog:author' a %}">{{ a }}</a></span>
+</h1>
+<p>{{ p.content }}</p>
 
 <p>Add a comment here:</p>
-<form action="{% url 'blog:add_comment' %}" method="post">
+<form action="{% url 'blog:add_comment' p.slug %}" method="post">
         {% csrf_token %}
-        <input style="display: none;" type="text" value="{{ p.slug }}">
         <input type="text" name="content">
         <input type="submit" value="comment">
 </form>
 
-{% if c %}
+{% if cs %}
 <ul>
     {% for c in cs %}
     <li>
@@ -29,3 +21,5 @@
     {% endfor %}
 </ul>
 {% endif %}
+
+<a href="{% url 'blog:index' %}">back to index</a>
