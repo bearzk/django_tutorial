@@ -1,18 +1,23 @@
+{% load staticfiles %}
 <head>
     <title>blog index</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/index.css' %}"/>
 </head>
 <body>
-    <form action="{% url 'blog:index' %}" method="post">
-        {% csrf_token %}
-        <input type="text" name="title">
-        <input type="text" name="content">
-        <input type="submit" value="post">
-    </form>
+    <div class="container">
+        <form action="{% url 'blog:index' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="title">
+            <input type="text" name="content">
+            <input type="submit" value="post">
+        </form>
 
-    <ul>
         {% for p in ps %}
-        <li><a href="{% url 'blog:detail' p.slug %}">{{ p.title }}</a>  {{ p.pub_date }}</li>
+        <div>
+            <h2><a href="{% url 'blog:detail' p.slug %}">{{ p.title }}</a></h2>
+            <p>{{ p.pub_date }}</p>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 </body>
 

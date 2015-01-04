@@ -1,25 +1,33 @@
+{% load staticfiles %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/detail.css' %}" />
+</head>
+<body>
 {% if error_message %}{% endif %}
-<h1>
-    {{ p }}
-    <span><a href="{% url 'blog:author' a %}">{{ a }}</a></span>
-</h1>
-<p>{{ p.content }}</p>
+<div class="container">
+    <h1>
+        {{ p }}
+        <span class="right"><a href="{% url 'blog:author' a %}">{{ a }}</a></span>
+    </h1>
+    <p class="content-text">{{ p.content }}</p>
 
-<p>Add a comment here:</p>
-<form action="{% url 'blog:add_comment' p.slug %}" method="post">
+    <p>Add a comment here:</p>
+    <form action="{% url 'blog:add_comment' p.slug %}" method="post">
         {% csrf_token %}
         <input type="text" name="content">
         <input type="submit" value="comment">
-</form>
+    </form>
 
-{% if cs %}
-<ul>
-    {% for c in cs %}
-    <li>
-        {{ c.content }}
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
+    {% if cs %}
+    <div class="comments">
+        {% for c in cs %}
+        <div class="comment">
+            {{ c.content }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 
-<a href="{% url 'blog:index' %}">back to index</a>
+    <a class="right" href="{% url 'blog:index' %}">back to index</a>
+</div>
+</body>
