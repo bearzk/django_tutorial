@@ -1,0 +1,24 @@
+.container {
+    max-width: 960px;
+    margin: 4em auto;
+}
+.right {
+    float: right;
+    font-size: 0.8em;
+}
+.content-text {
+    clear: both;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 1em;
+}
+a {
+    text-decoration: none;
+    color: #006633;
+}
+.comment {
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 0.5em 1em;
+    margin: 0.3em 0;
+}
