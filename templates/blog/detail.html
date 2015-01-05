@@ -18,15 +18,17 @@
         <input type="submit" value="comment">
     </form>
 
-    {% if cs %}
     <div class="comments">
         {% for c in cs %}
-        <div class="comment">
-            {{ c.content }}
-        </div>
+            <div class="comment">
+                {{ c.content }}
+            </div>
+        {% empty %}
+            <div>
+                No comment yet.
+            </div>
         {% endfor %}
     </div>
-    {% endif %}
 
     <a class="right" href="{% url 'blog:index' %}">back to index</a>
 </div>
