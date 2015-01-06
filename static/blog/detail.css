@@ -1,3 +1,7 @@
+body {
+    background: url('grid.png');
+    background-repeat: repeat-x;
+}
 .container {
     max-width: 960px;
     margin: 4em auto;
@@ -11,6 +15,7 @@
     border: 1px solid;
     border-radius: 3px;
     padding: 1em;
+    background: white;
 }
 a {
     text-decoration: none;
@@ -21,4 +26,12 @@ a {
     border-radius: 3px;
     padding: 0.5em 1em;
     margin: 0.3em 0;
+}
+
+.even {
+    background: white;
+}
+
+.odd {
+    background: #eeeeee;
 }

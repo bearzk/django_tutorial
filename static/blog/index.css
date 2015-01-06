@@ -1,3 +1,7 @@
+body {
+    background: url('grid.png');
+    background-repeat: repeat-x;
+}
 .container {
     max-width: 960px;
 }

@@ -20,7 +20,7 @@
 
     <div class="comments">
         {% for c in cs %}
-            <div class="comment">
+            <div class="comment {% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
                 {{ c.content }}
             </div>
         {% empty %}
