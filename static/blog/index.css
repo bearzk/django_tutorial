@@ -19,3 +19,7 @@ a {
     text-decoration: none;
     color: #006633;
 }
+.header-block {
+    margin: 0;
+    padding: 0;
+}

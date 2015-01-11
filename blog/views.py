@@ -12,7 +12,7 @@ class IndexView(CreateView):
 
     def get(self, request, *args, **kwargs):
         ps = Post.objects.order_by('-pub_date')[:10]
-        return render(request, 'blog/index.html', {'ps': ps})
+        return render(request, 'blog/index.html', {'ps': ps, 'title': 'Blog Index'})
 
     def post(self, request, *args, **kwargs):
         a = get_object_or_404(Author, nickname='bearzk')
