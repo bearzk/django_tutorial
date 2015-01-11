@@ -1,0 +1,14 @@
+{% load staticfiles %}
+<div class="header-container pure-g">
+    <div class="header-logo pure-u-1-4">
+        <a href="{% url 'blog:index' %}" title="bearzk blog">
+            <img src="{% static 'img/logo.png' %}">
+        </a>
+    </div>
+    <div class="header-message pure-u-1-4"></div>
+    <div class="header-user pure-u-1-4">{{ request.user }}</div>
+    <div class="header-login-out pure-u-1-4">
+        log{% if request.user.is_authenticated %}in{% else %}out{% endif %}
+    </div>
+</div>
+

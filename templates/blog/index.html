@@ -1,47 +1,30 @@
-<!doctype html>
-{% load staticfiles %}
-<html lang="en">
-<head xmlns="http://www.w3.org/1999/html">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
-    <title>blog index</title>
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-old-ie-min.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/index.css' %}"/>
-</head>
-<body>
-    <div class="container pure-g">
-        {% for p in ps %}
-        <div class="pure-u-1-2">
-            <h2><a href="{% url 'blog:detail' p.slug %}">{{ p.title }}</a></h2>
-            <p>by <a href="{% url 'blog:author' p.author %}">{{ p.author }}</a> on {{ p.pub_date.date }}</p>
-        </div>
-        {% endfor %}
-        <form class='pure-form pure-form-aligned pure-u-1 pure-g' action="{% url 'blog:index' %}" method="post">
-            {% csrf_token %}
-            <fieldset>
-                <div class="pure-control-group">
-                    <label for="blog-title">Title</label>
-                    <input id="blog-title" type="text" name="title" placeholder="title">
-                </div>
-
-                <div class="pure-control-group">
-                    <label for="blog-body">Content</label>
-                    <textarea id="blog-body" type="text" name="content" placeholder="content" rows="20" cols="50"></textarea>
-                </div>
-
-                <div class="pure-control-group">
-                    <label for="blog-submit"></label>
-                    <input id="blog-submit" class="pure-button pure-button-primary" type="submit" value="post">
-                </div>
-            </fieldset>
-        </form>
+{% extends 'generic/base.html' %}
+{% block content %}
+<div class="container pure-g">
+    {% for p in ps %}
+    <div class="pure-u-1-2">
+        <h2><a href="{% url 'blog:detail' p.slug %}">{{ p.title }}</a></h2>
+        <p>by <a href="{% url 'blog:author' p.author %}">{{ p.author }}</a> on {{ p.pub_date.date }}</p>
     </div>
+    {% endfor %}
+    <form class='pure-form pure-form-aligned pure-u-1 pure-g' action="{% url 'blog:index' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <div class="pure-control-group">
+                <label for="blog-title">Title</label>
+                <input id="blog-title" type="text" name="title" placeholder="title">
+            </div>
 
-</body>
-</html>
+            <div class="pure-control-group">
+                <label for="blog-body">Content</label>
+                <textarea id="blog-body" type="text" name="content" placeholder="content" rows="20" cols="50"></textarea>
+            </div>
 
-</body>
-
+            <div class="pure-control-group">
+                <label for="blog-submit"></label>
+                <input id="blog-submit" class="pure-button pure-button-primary" type="submit" value="post">
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}
