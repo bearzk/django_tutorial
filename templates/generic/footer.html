@@ -8,7 +8,7 @@
     <div class="header-message pure-u-1-4"></div>
     <div class="header-user pure-u-1-4">{{ request.user }}</div>
     <div class="header-login-out pure-u-1-4">
-        log{% if request.user.is_authenticated %}in{% else %}out{% endif %}
+        copyright &copy; {% now "Y" %}
     </div>
 </div>
 
