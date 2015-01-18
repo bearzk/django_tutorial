@@ -1,0 +1,29 @@
+{% extends "generic/base.html" %}
+
+{% block content %}
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<form class='pure-form pure-form-aligned pure-u-1 pure-g' action="{% url 'django.contrib.auth.views.login' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <div class="pure-control-group">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+
+        <div class="pure-control-group">
+            {{ form.password.label_tag }}
+            {{ form.password }}
+        </div>
+
+        <div class="pure-control-group">
+            <input type="submit" class="pure-button pure-button-primary" value="login" />
+            <input type="hidden" name="next" value="{% url 'blog:index' %}" />
+        </div>
+    </fieldset>
+</form>
+
+{% endblock %}
