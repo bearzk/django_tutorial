@@ -6,9 +6,9 @@
         </a>
     </div>
     <div class="header-block pure-u-1-4"></div>
-    <div class="header-block pure-u-1-4">{{ request.user }}</div>
+    <div class="header-block pure-u-1-4">{{ user }}</div>
     <div class="header-block pure-u-1-4">
-        log{% if request.user.is_authenticated %}in{% else %}out{% endif %}
+        <a href="">log{% if request.user.is_authenticated %}in{% else %}out{% endif %}</a>
     </div>
 </div>
 
